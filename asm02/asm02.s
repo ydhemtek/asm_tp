@@ -6,7 +6,7 @@ len equ $ - msg
 
 
 section .bss
-input resb 2
+input resb 3
 
 section .text
 _start:
@@ -15,7 +15,7 @@ _start:
     mov rax, 0 
     mov rdi, 0 
     mov rsi, input 
-    mov rdx, 2 
+    mov rdx, 3 
     syscall
 
 
@@ -26,6 +26,11 @@ _start:
 
     mov al, byte [input+1]
     cmp al, '2'
+    jne error_exit
+
+    cmp rax, 3
+    mov al, byte [input+2]
+    cmp al, 0x0A
     jne error_exit
 
 
