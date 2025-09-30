@@ -15,6 +15,13 @@ _start:
 
 
     movzx rbx, byte [buffer]
+
+    cmp rbx, '0'
+    jl not_number
+    cmp rbx, '9'
+    jg not_number
+    
+
     sub rbx, '0'
 
 
@@ -30,4 +37,9 @@ is_even:
 is_odd:
     mov rax, 60
     mov rdi, 1
+    syscall
+
+not_number:
+    mov rax, 60
+    mov rdi, 2
     syscall
