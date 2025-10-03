@@ -59,14 +59,14 @@ _start:
 atoi:
     xor rax, rax
 .next_digit:
-    mov bl, byte [rsi]
-    cmp bl, 0
+    mov dl, byte [rsi]
+    cmp dl, 0
     je .done
-    cmp bl, 0x0A
+    cmp dl, 0x0A
     je .done
-    sub bl, '0'
+    sub dl, '0'
     imul rax, rax, 10
-    add rax, rbx
+    add rax, rdx
     inc rsi
     jmp .next_digit
 .done:
